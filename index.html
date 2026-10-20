@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Informasi Geografis (GIS) - Manajemen Aset Kota Cerdas</title>
+
+    <!-- 1. Pustaka Peta Leaflet (Standar GIS Web yang Ringan & Mudah Digunakan) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- 2. File Styling CSS Milik Kita -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Bagian Judul Aplikasi -->
+    <header class="app-header">
+        <div class="header-content">
+            <h1>🏙️ Smart City GIS: Manajemen Aset & Infrastruktur Perkotaan</h1>
+            <p>Implementasi Studi Kasus Kuliah Tamu: <em>Career and Competition in Industry Era with GIS</em></p>
+        </div>
+    </header>
+
+    <!-- Kontainer Utama: Sidebar di Kiri dan Peta di Kanan -->
+    <div class="main-container">
+        
+        <!-- SIDEBAR: Kontrol Filter & Informasi Detail Aset -->
+        <aside class="sidebar">
+            
+            <!-- Ringkasan Statistik Sederhana -->
+            <div class="card">
+                <h3>📊 Ringkasan Data Aset</h3>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-label">Total Aset</span>
+                        <span id="totalAset" class="stat-number">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Kondisi Baik</span>
+                        <span id="totalBaik" class="stat-number text-green">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Perlu Servis</span>
+                        <span id="totalPerluServis" class="stat-number text-red">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Kategori Aset -->
+            <div class="card">
+                <h3>🔍 Filter Kategori Aset</h3>
+                <p class="filter-desc">Pilih kategori untuk memfilter titik di peta:</p>
+                <div class="filter-buttons">
+                    <button class="btn-filter active" onclick="filterAset('Semua')">Semua Aset</button>
+                    <button class="btn-filter" onclick="filterAset('Listrik')">⚡ Jaringan Listrik</button>
+                    <button class="btn-filter" onclick="filterAset('Air PDAM')">💧 Pipa & Valve Air</button>
+                    <button class="btn-filter" onclick="filterAset('Fasilitas')">🏢 Fasilitas Publik</button>
+                </div>
+            </div>
+
+            <!-- Panel Detail Aset yang Sedang Dipilih -->
+            <div class="card">
+                <h3>📋 Detail Informasi Aset</h3>
+                <p id="placeholderText" class="text-muted">Klik salah satu pin marker di peta untuk melihat data atribut detail aset.</p>
+                
+                <div id="detailPanel" class="detail-box" style="display: none;">
+                    <h4 id="detailNamaAset">-</h4>
+                    <table class="detail-table">
+                        <tr>
+                            <td><strong>Kode Aset:</strong></td>
+                            <td id="detailKode">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kategori:</strong></td>
+                            <td id="detailKategori">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Status Kondisi:</strong></td>
+                            <td id="detailStatus">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lokasi Koordinat:</strong></td>
+                            <td id="detailKoordinat">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tahun Pengadaan:</strong></td>
+                            <td id="detailTahun">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Keterangan:</strong></td>
+                            <td id="detailKeterangan">-</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Catatan Edukasi / Konsep Materi -->
+            <div class="card note-card">
+                <h4>💡 Konsep GIS Sederhana:</h4>
+                <p><strong>Data Spasial:</strong> Titik koordinat lokasi (Latitude, Longitude) di peta.<br>
+                <strong>Data Atribut:</strong> Keterangan aset (Kondisi, Tahun, Kategori) di tabel.</p>
+            </div>
+
+        </aside>
+
+        <!-- AREA PETA (MAP VIEW) -->
+        <main class="map-container">
+            <div id="map"></div>
+        </main>
+
+    </div>
+
+    <!-- 3. File Logika JavaScript Milik Kita -->
+    <script src="app.js"></script>
+</body>
+</html>

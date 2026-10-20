@@ -1,0 +1,233 @@
+/* ==========================================================
+   CSS Sederhana: Sistem Informasi Geografis (WebGIS)
+   Dibuat rapi dan mudah dipahami untuk pembelajaran mahasiswa
+   ========================================================== */
+
+/* Pengaturan dasar halaman */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Bagian Header / Judul */
+.app-header {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: #ffffff;
+    padding: 14px 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.header-content h1 {
+    font-size: 1.35rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.header-content p {
+    font-size: 0.85rem;
+    color: #bfdbfe;
+}
+
+/* Tata Letak Kontainer Utama (Flexbox 2 Kolom) */
+.main-container {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 65px);
+}
+
+/* Sidebar di sebelah kiri */
+.sidebar {
+    width: 380px;
+    background-color: #ffffff;
+    padding: 16px;
+    overflow-y: auto;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Kartu / Kotak Informasi */
+.card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.card h3 {
+    font-size: 0.95rem;
+    color: #1e3a8a;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 6px;
+}
+
+/* Grid Statistik Ringkasan */
+.stats-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.stat-box {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 8px;
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.72rem;
+    color: #64748b;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.stat-number {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #0f172a;
+}
+
+.text-green {
+    color: #16a34a !important;
+}
+
+.text-red {
+    color: #dc2626 !important;
+}
+
+/* Tombol-tombol Filter Kategori */
+.filter-desc {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.btn-filter {
+    background-color: #ffffff;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.btn-filter:hover {
+    background-color: #e2e8f0;
+}
+
+.btn-filter.active {
+    background-color: #2563eb;
+    color: #ffffff;
+    border-color: #1d4ed8;
+    font-weight: bold;
+}
+
+/* Box Detail Aset */
+.detail-box {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.detail-box h4 {
+    color: #1e3a8a;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    border-bottom: 1px dashed #cbd5e1;
+    padding-bottom: 4px;
+}
+
+.detail-table {
+    width: 100%;
+    font-size: 0.8rem;
+    border-collapse: collapse;
+}
+
+.detail-table td {
+    padding: 4px 2px;
+    vertical-align: top;
+}
+
+.text-muted {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* Label Status Badge */
+.badge-status {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.badge-baik {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.badge-servis {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Kartu Catatan Konsep */
+.note-card {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+.note-card h4 {
+    font-size: 0.85rem;
+    color: #1d4ed8;
+    margin-bottom: 6px;
+}
+
+.note-card p {
+    font-size: 0.78rem;
+    color: #1e40af;
+    line-height: 1.5;
+}
+
+/* Kontainer Peta Leaflet */
+.map-container {
+    flex: 1;
+    position: relative;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
